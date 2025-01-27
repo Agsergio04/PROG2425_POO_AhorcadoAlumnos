@@ -15,13 +15,15 @@ class Palabra(val palabraOculta: String ) {
             var contador = 0
             print("Introduce una letra: ")
             val letra = readln()
-            for(letra in palabraOculta){
-                if (palabraOculta[contador] == letra){
-                    return true
+            if (letra in palabraOculta) {
+                for (letra in palabraOculta) {
+                    if (palabraOculta[contador] == letra) {
+                        return true
+                    }
+                    contador++
                 }
-                contador++
+                return false
             }
-            return false
         }catch (e: Exception){
             println("Valor no válido o no has escrito nada!!!")
         }
@@ -29,7 +31,7 @@ class Palabra(val palabraOculta: String ) {
         return true
     }
 
-    fun obtenerProgreso(): String = "$progreso"
+    fun obtenerProgreso(): String = "${progreso}"
 
     fun esCompleta():Boolean{
         for (caracter in progreso){

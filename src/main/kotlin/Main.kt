@@ -8,7 +8,7 @@ fun main() {
     do {
         val palabraOculta = palabras.pop()
         if (palabraOculta != null) {
-            val jugador = Jugador(intentosMaximos = 6)
+            val jugador = Jugador(intentos = 6)
             val juego = Juego(palabraOculta, jugador)
 
             juego.iniciar()
@@ -31,6 +31,7 @@ fun Char.quitarAcentos(): Char {
     sobre el cual la función de extensión será llamada. Dentro de la función de extensión, puedes acceder
     a las propiedades y métodos de esta instancia utilizando this.
     */
+    return '$'
 }
 
 /**
