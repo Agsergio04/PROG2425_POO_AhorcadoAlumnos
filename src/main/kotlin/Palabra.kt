@@ -5,33 +5,30 @@ import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.serialization.gson.*
 import kotlinx.coroutines.runBlocking
+import java.awt.Container
 
 class Palabra(val palabraOculta: String ) {
 
     private var progreso = Array(palabraOculta.length) { '_' }
 
-    fun revelarLetra(): Boolean{
-        try {
-            var contador = 0
-            print("Introduce una letra: ")
-            val letra = readln()
-            if (letra in palabraOculta) {
-                for (letra in palabraOculta) {
-                    if (palabraOculta[contador] == letra) {
-                        return true
-                    }
-                    contador++
-                }
-                return false
-            }
-        }catch (e: Exception){
-            println("Valor no válido o no has escrito nada!!!")
-        }
+    fun revelarLetra(letra : Char): Boolean{
 
-        return true
+        var contador : Int = 0
+        var resultado = false
+        for (palabra in palabraOculta) {
+            if (palabra == letra) {
+                progreso[contador] = letra
+                resultado = true
+            }
+            contador++
+        }
+        return resultado
+
     }
 
-    fun obtenerProgreso(): String = "${progreso}"
+    fun obtenerProgreso(): String {
+        return "${progreso.joinToString { "_" }}"
+    }
 
     fun esCompleta():Boolean{
         for (caracter in progreso){
