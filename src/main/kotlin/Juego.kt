@@ -1,27 +1,26 @@
 package es.iesra.prog2425_ahorcado
 
 class Juego(
-    val palabra : Palabra,
+    val palabra : String = "hola",
     val jugador : Jugador) {
 
     fun iniciar(){
         println("¡Bienvenido al juego del Ahorcado!")
-        println("La palabra tiene ${palabra.palabraOculta.length} letras. ")
+        println("La palabra tiene ${palabra.count()} letras. ") //palabra.palabraOculta.lenght
 
 
         do {
-            println("Palabra: ${palabra.obtenerProgreso()}")
+            println("Palabra: ${'_'}") // palabraOculta
             println("Intentos restantes: ${jugador.intentos}")
             println("Letras usadas: ${jugador.obtenerLetrasUsadas()}")
 
             if (true){
-                palabra.revelarLetra()
 
             }else jugador.fallarIntento()
 
-        }while (jugador.intentos > 0 && !(palabra.esCompleta()))//progreso == palabraOculta
+        }while (palabraDescubrir == palabra)//progreso == palabraOculta
 
-        if (palabra.esCompleta()) { // palabra.esCompleta()
+        if (palabraDescubrir == palabra) { // palabra.esCompleta()
             println("\n¡Felicidades! Has adivinado la palabra: ${palabra}") // palabra.obtenerProgreso()
         } else {
             println("\nLo siento, te has quedado sin intentos. La palabra era: ${palabra.palabraOculta}")
