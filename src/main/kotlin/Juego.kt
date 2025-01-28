@@ -17,9 +17,15 @@ class Juego(
             var palabraUsuario  = readln()
             val letra = palabraUsuario[0]
 
-            if (jugador.intentarLetra(letra)){
-                palabra.revelarLetra(letra)
-            }else jugador.fallarIntento()
+
+            if(jugador.intentarLetra(letra)){
+                if (!(palabra.revelarLetra(letra)))
+                    jugador.fallarIntento()
+
+            }else{
+                println("Introduce otra letra porque esa ya la has usado")
+            }
+
 
         }while (jugador.intentos > 0 && !(palabra.esCompleta()))
 
